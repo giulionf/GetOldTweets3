@@ -74,7 +74,7 @@ def main(argv):
         username_files = set()
         for opt, arg in opts:
             if opt == '--querysearch':
-                tweetCriteria.querySearch = arg
+                tweetCriteria.query_search = arg
 
             elif opt == '--username':
                 usernames_ = [u.lstrip('@') for u in re.split(r'[\s,]+', arg) if u]
@@ -97,10 +97,10 @@ def main(argv):
                 tweetCriteria.within = arg
 
             elif opt == '--toptweets':
-                tweetCriteria.topTweets = True
+                tweetCriteria.top_tweets = True
 
             elif opt == '--maxtweets':
-                tweetCriteria.maxTweets = int(arg)
+                tweetCriteria.max_tweets = int(arg)
 
             elif opt == '--lang':
                 tweetCriteria.lang = arg
@@ -130,8 +130,8 @@ def main(argv):
         if usernames:
             if len(usernames) > 1:
                 tweetCriteria.username = usernames
-                if len(usernames)>20 and tweetCriteria.maxTweets > 0:
-                    maxtweets_ = (len(usernames) // 20 + (len(usernames)%20>0)) * tweetCriteria.maxTweets
+                if len(usernames)>20 and tweetCriteria.max_tweets > 0:
+                    maxtweets_ = (len(usernames) // 20 + (len(usernames)%20>0)) * tweetCriteria.max_tweets
                     print("Warning: due to multiple username batches `maxtweets' set to %i" % maxtweets_)
             else:
                 tweetCriteria.username = usernames.pop()

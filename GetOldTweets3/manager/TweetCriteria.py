@@ -2,12 +2,25 @@ class TweetCriteria:
     """Search parameters class"""
 
     def __init__(self):
-        self.maxTweets = 0
-        self.topTweets = False
+        self.max_tweets = 0
+        self.top_tweets = False
         self.within = "15mi"
+        self.username = None
+        self.since = None
+        self.until = None
+        self.near = None
+        self.query_search = None
+        self.lang = None
 
-    def setUsername(self, username):
+    def set_username(self, username):
         """Set username(s) of tweets author(s)
+
+        Examples:
+            setUsername('barackobama')
+            setUsername('barackobama,whitehouse')
+            setUsername('barackobama whitehouse')
+            setUsername(['barackobama','whitehouse'])
+
         Parameters
         ----------
         username : str or iterable
@@ -16,16 +29,11 @@ class TweetCriteria:
         usernames separeated by spaces or commas.
         `username` can contain a leading @
 
-        Examples:
-            setUsername('barackobama')
-            setUsername('barackobama,whitehouse')
-            setUsername('barackobama whitehouse')
-            setUsername(['barackobama','whitehouse'])
         """
         self.username = username
         return self
 
-    def setSince(self, since):
+    def set_since(self, since):
         """Set a lower bound date in UTC
         Parameters
         ----------
@@ -35,7 +43,7 @@ class TweetCriteria:
         self.since = since
         return self
 
-    def setUntil(self, until):
+    def set_until(self, until):
         """Set an upper bound date in UTC (not included in results)
         Parameters
         ----------
@@ -45,7 +53,7 @@ class TweetCriteria:
         self.until = until
         return self
 
-    def setNear(self, near):
+    def set_near(self, near):
         """Set location to search nearby
         Parameters
         ----------
@@ -55,7 +63,7 @@ class TweetCriteria:
         self.near = near
         return self
 
-    def setWithin(self, within):
+    def set_within(self, within):
         """Set the radius for search by location
         Parameters
         ----------
@@ -65,38 +73,38 @@ class TweetCriteria:
         self.within = within
         return self
 
-    def setQuerySearch(self, querySearch):
+    def set_query_search(self, query_search):
         """Set a text to be searched for
         Parameters
         ----------
-        querySearch : str
+        query_search : str
         """
-        self.querySearch = querySearch
+        self.query_search = query_search
         return self
 
-    def setMaxTweets(self, maxTweets):
+    def set_max_tweets(self, max_tweets):
         """Set the maximum number of tweets to search
         Parameters
         ----------
-        maxTweets : int
+        max_tweets : int
         """
-        self.maxTweets = maxTweets
+        self.max_tweets = max_tweets
         return self
 
-    def setLang(self, Lang):
+    def set_lang(self, lang):
         """Set language
         Parameters
         ----------
-        Lang : str
+        lang : str
         """
-        self.lang = Lang
+        self.lang = lang
         return self
 
-    def setTopTweets(self, topTweets):
+    def set_top_tweets(self, top_tweets):
         """Set the flag to search only for top tweets
         Parameters
         ----------
-        topTweets : bool
+        top_tweets : bool
         """
-        self.topTweets = topTweets
+        self.top_tweets = top_tweets
         return self
